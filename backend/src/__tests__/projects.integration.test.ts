@@ -21,18 +21,25 @@ vi.mock("../services/projectService.js", async () => {
       updatedAt: new Date(),
       isDeleted: false,
     })),
-    listProjects: vi.fn(async (_options) => [
-      {
-        id: "project-1",
-        name: "Project Alpha",
-        description: "First project",
-        status: "ACTIVE" as const,
-        createdBy: "user-1",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        isDeleted: false,
+    listProjects: vi.fn(async (_page, _limit, _options) => ({
+      data: [
+        {
+          id: "project-1",
+          name: "Project Alpha",
+          description: "First project",
+          status: "ACTIVE" as const,
+          createdBy: "user-1",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          isDeleted: false,
+        },
+      ],
+      meta: {
+        page: 1,
+        limit: 50,
+        total: 1,
       },
-    ]),
+    })),
     updateProject: vi.fn(async (_input) => ({
       id: "project-1",
       name: "Project Alpha Updated",
@@ -106,7 +113,7 @@ describe("Project routes", () => {
     const response = await request(app).get("/projects").set(AUTH_HEADER);
 
     expect(response.status).toBe(200);
-    expect(response.body).toHaveLength(1);
+    expect(response.body.data).toHaveLength(1);
   });
 
   it("updates a project", async () => {
