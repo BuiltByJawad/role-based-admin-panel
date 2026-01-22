@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(249, 115, 22, 0.18), transparent 45%),
+    radial-gradient(circle at 80% 10%, rgba(56, 189, 248, 0.16), transparent 40%),
+    linear-gradient(160deg, #0b1120 0%, #020617 55%, #030712 100%);
+  color: #e2e8f0;
+}
+
+* {
+  scrollbar-color: #f97316 #0b1120;
+}
+
+*::selection {
+  background: rgba(249, 115, 22, 0.35);
+  color: #fff7ed;
+}
+
+.page-transition {
+  animation: fadeSlideIn 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: opacity, transform;
+}
+
+.content-transition {
+  animation: fadeUp 580ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: opacity, transform;
+}
+
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
