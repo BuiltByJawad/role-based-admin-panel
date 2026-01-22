@@ -1,0 +1,39 @@
+# Logs
+logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dependencies
+**/node_modules/
+
+# Build outputs
+**/dist/
+**/build/
+
+# Env files
+**/.env
+**/.env.*
+!**/.env.example
+
+# Coverage
+**/coverage/
+
+# Cache
+**/.cache/
+**/.turbo/
+**/.next/
+**/.parcel-cache/
+
+# IDE
+.vscode/
+.idea/
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+GIT_PUSH_STEPS.md
