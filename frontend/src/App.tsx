@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { MainLayout } from "./layout/MainLayout";
 import { LoginPage } from "./pages/Login/LoginPage";
 import { RegisterPage } from "./pages/Register/RegisterPage";
@@ -6,11 +6,42 @@ import { DashboardPage } from "./pages/Dashboard/DashboardPage";
 import { UsersPage } from "./pages/Users/UsersPage";
 import { ProjectsPage } from "./pages/Projects/ProjectsPage";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import { useAppSelector } from "./store/hooks";
+
+const AuthenticatedLayout = () => {
+  const token = useAppSelector((state) => state.auth.token);
+
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return <MainLayout />;
+};
+
+const LoginRedirect = () => {
+  const token = useAppSelector((state) => state.auth.token);
+
+  if (token) {
+    return <Navigate to="/" replace />;
+  }
+
+  return <LoginPage />;
+};
+
+const RegisterRedirect = () => {
+  const token = useAppSelector((state) => state.auth.token);
+
+  if (token) {
+    return <Navigate to="/" replace />;
+  }
+
+  return <RegisterPage />;
+};
 
 export const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<MainLayout />}>
+      <Route path="/" element={<AuthenticatedLayout />}>
         <Route index element={<DashboardPage />} />
         <Route path="projects" element={<ProjectsPage />} />
         <Route
@@ -22,8 +53,8 @@ export const App = () => {
           }
         />
       </Route>
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/login" element={<LoginRedirect />} />
+      <Route path="/register" element={<RegisterRedirect />} />
     </Routes>
   );
 };

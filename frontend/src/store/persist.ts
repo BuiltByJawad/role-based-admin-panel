@@ -24,3 +24,12 @@ export const saveAuthState = (state: AuthState) => {
     console.warn("Failed to save auth state", error);
   }
 };
+
+export const clearAuthState = () => {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.warn("Failed to clear auth state", error);
+  }
+};
