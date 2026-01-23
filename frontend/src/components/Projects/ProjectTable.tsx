@@ -51,27 +51,27 @@ const ProjectRow = memo(({
     );
 
     return (
-        <tr className="text-sm text-slate-200">
+        <tr className="text-[0.95rem] text-slate-700 dark:text-slate-200">
             <td className="px-4 py-3 pr-6">
                 {editing ? (
                     <input
-                        className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-white placeholder:text-slate-400"
+                        className="w-full rounded-lg border border-slate-200 bg-white/90 px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
                         value={editName}
                         onChange={(event) => setEditName(event.target.value)}
                     />
                 ) : (
-                    <span className="font-medium text-white">{project.name}</span>
+                    <span className="font-medium text-slate-900 dark:text-white">{project.name}</span>
                 )}
             </td>
             <td className="px-4 py-3">
                 {editing ? (
                     <input
-                        className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-white placeholder:text-slate-400"
+                        className="w-full rounded-lg border border-slate-200 bg-white/90 px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
                         value={editDescription}
                         onChange={(event) => setEditDescription(event.target.value)}
                     />
                 ) : (
-                    <span className="text-slate-300">{project.description}</span>
+                    <span className="text-slate-600 dark:text-slate-300">{project.description}</span>
                 )}
             </td>
             <td className="px-4 py-3">
@@ -79,7 +79,7 @@ const ProjectRow = memo(({
                     {isAdmin ? (
                         <div className="relative inline-flex items-center">
                             <select
-                                className="appearance-none rounded-full border border-slate-700 bg-slate-950 px-3 py-1 pr-8 text-xs text-slate-200"
+                                className="appearance-none rounded-full border border-slate-200 bg-white/95 px-3 py-2 pr-8 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
                                 value={project.status}
                                 disabled={isPending}
                                 onChange={handleStatusChange}
@@ -88,7 +88,7 @@ const ProjectRow = memo(({
                                 <option value="ARCHIVED">ARCHIVED</option>
                             </select>
                             <svg
-                                className="pointer-events-none absolute right-3 h-3 w-3 text-slate-400"
+                                className="pointer-events-none absolute right-3 h-4 w-4 text-slate-400"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                                 aria-hidden="true"
@@ -97,7 +97,7 @@ const ProjectRow = memo(({
                             </svg>
                         </div>
                     ) : (
-                        <span className="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-200">
+                        <span className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600 dark:border-slate-700 dark:text-slate-200">
                             {project.status}
                         </span>
                     )}
@@ -105,18 +105,18 @@ const ProjectRow = memo(({
             </td>
             {isAdmin && (
                 <td className="px-4 py-3 pr-6">
-                    <div className="flex flex-wrap justify-start gap-2">
+                    <div className="flex flex-nowrap items-center justify-start gap-2">
                         {editing ? (
                             <>
                                 <button
-                                    className="rounded-full border border-slate-700 px-3 py-1 text-xs"
+                                    className="rounded-full border border-slate-300 px-3 py-1 text-xs text-slate-600 dark:border-slate-700 dark:text-slate-200"
                                     disabled={isPending}
                                     onClick={handleSave}
                                 >
                                     Save
                                 </button>
                                 <button
-                                    className="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-300"
+                                    className="rounded-full border border-slate-300 px-3 py-1 text-xs text-slate-500 dark:border-slate-700 dark:text-slate-300"
                                     onClick={handleCancel}
                                 >
                                     Cancel
@@ -125,14 +125,14 @@ const ProjectRow = memo(({
                         ) : (
                             <>
                                 <button
-                                    className="rounded-full border border-slate-700 px-3 py-1 text-xs"
+                                    className="rounded-full border border-slate-300 px-3 py-1 text-xs text-slate-600 dark:border-slate-700 dark:text-slate-200"
                                     disabled={isPending}
                                     onClick={startEdit}
                                 >
                                     Edit
                                 </button>
                                 <button
-                                    className="rounded-full border border-red-500/40 px-3 py-1 text-xs text-red-200"
+                                    className="rounded-full border border-red-500/40 px-3 py-1 text-xs text-red-500 dark:text-red-200"
                                     disabled={isPending}
                                     onClick={handleDelete}
                                 >
@@ -160,23 +160,23 @@ export const ProjectTable = memo(({
     if (projects.length === 0) return null;
 
     return (
-        <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-800">
-            <table className="min-w-[720px] w-full table-fixed text-left text-sm">
+        <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-200/70 bg-white/85 shadow-sm shadow-slate-200/60 backdrop-blur dark:border-slate-800 dark:bg-slate-900/60 dark:shadow-none">
+            <table className="w-full min-w-[720px] table-fixed text-left text-[0.95rem]">
                 <colgroup>
                     <col className="w-1/4" />
                     <col className="w-1/2" />
                     <col className={isAdmin ? "w-1/6" : "w-1/4"} />
                     {isAdmin && <col className="w-1/6" />}
                 </colgroup>
-                <thead className="bg-slate-900/80 text-xs uppercase tracking-[0.2em] text-slate-300">
+                <thead className="bg-slate-100/90 text-[0.65rem] uppercase tracking-[0.22em] text-slate-600 dark:bg-slate-900/80 dark:text-slate-300">
                     <tr>
-                        <th className="px-4 py-3">Name</th>
-                        <th className="px-4 py-3">Description</th>
-                        <th className="px-4 py-3 pr-6">Status</th>
-                        {isAdmin && <th className="px-4 py-3 pr-6">Actions</th>}
+                        <th className="px-4 py-3 text-slate-600 dark:text-slate-300">Name</th>
+                        <th className="px-4 py-3 text-slate-600 dark:text-slate-300">Description</th>
+                        <th className="px-4 py-3 pr-6 text-slate-600 dark:text-slate-300">Status</th>
+                        {isAdmin && <th className="px-4 py-3 pr-6 text-slate-600 dark:text-slate-300">Actions</th>}
                     </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800">
+                <tbody className="divide-y divide-slate-200/70 dark:divide-slate-800">
                     {projects.map((project) => (
                         <ProjectRow
                             key={project.id}

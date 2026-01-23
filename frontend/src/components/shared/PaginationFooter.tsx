@@ -24,16 +24,16 @@ export const PaginationFooter = ({
     const visiblePages = Array.from({ length: Math.min(totalPages, 10) }, (_, index) => index + 1);
 
     return (
-        <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-slate-800 bg-slate-900/60 px-4 py-3 text-sm text-slate-300 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-slate-200/70 bg-white/80 px-4 py-4 text-[0.9rem] text-slate-900 shadow-sm shadow-slate-200/60 backdrop-blur sm:flex-row sm:items-center sm:justify-between dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-200 dark:shadow-none">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
                 <span>
                     Page {page} of {Math.max(totalPages, 1)} ({total} records)
                 </span>
                 <div className="flex items-center gap-2">
-                    <span className="text-xs uppercase tracking-[0.2em] text-slate-400">Rows</span>
+                    <span className="text-[0.7rem] uppercase tracking-[0.2em] text-slate-900 dark:text-slate-200">Rows</span>
                     <div className="relative inline-flex items-center">
                         <select
-                            className="appearance-none rounded-full border border-slate-700 bg-slate-950 px-3 py-1 pr-8 text-xs text-slate-200"
+                            className="appearance-none rounded-full border border-slate-300 bg-white/90 px-4 py-2 pr-8 text-[0.9rem] text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
                             value={limit}
                             onChange={(event) => onLimitChange(Number(event.target.value))}
                         >
@@ -56,7 +56,7 @@ export const PaginationFooter = ({
             </div>
             <div className="flex flex-wrap items-center gap-2">
                 <button
-                    className="rounded-full border border-slate-700 px-3 py-1 text-xs disabled:opacity-50"
+                    className="rounded-full border border-slate-300 px-4 py-2 text-[0.9rem] text-slate-900 disabled:opacity-50 dark:border-slate-700 dark:text-slate-200"
                     disabled={page <= 1 || isLoading}
                     onClick={() => onPageChange(Math.max(page - 1, 1))}
                 >
@@ -65,10 +65,10 @@ export const PaginationFooter = ({
                 {visiblePages.map((pageNumber) => (
                     <button
                         key={pageNumber}
-                        className={`rounded-full border px-3 py-1 text-xs transition ${
+                        className={`rounded-full border px-4 py-2 text-[0.9rem] transition ${
                             pageNumber === page
-                                ? "border-brand-500/60 bg-brand-500/20 text-white"
-                                : "border-slate-700 text-slate-300 hover:border-slate-500"
+                                ? "border-brand-500/60 bg-brand-500/20 text-slate-900 dark:text-white"
+                                : "border-slate-300 text-slate-900 hover:border-slate-400 dark:border-slate-700 dark:text-slate-200 dark:hover:border-slate-500"
                         }`}
                         disabled={isLoading}
                         onClick={() => onPageChange(pageNumber)}
@@ -77,7 +77,7 @@ export const PaginationFooter = ({
                     </button>
                 ))}
                 <button
-                    className="rounded-full border border-slate-700 px-3 py-1 text-xs disabled:opacity-50"
+                    className="rounded-full border border-slate-300 px-4 py-2 text-[0.9rem] text-slate-900 disabled:opacity-50 dark:border-slate-700 dark:text-slate-200"
                     disabled={page >= totalPages || isLoading}
                     onClick={() => onPageChange(Math.min(page + 1, totalPages))}
                 >

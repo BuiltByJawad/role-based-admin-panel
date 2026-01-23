@@ -58,7 +58,7 @@ export const ProjectsPage = memo(() => {
     const errorMessageText = error instanceof Error ? error.message : errorMessage || "Failed to load projects";
 
     return (
-        <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-6 content-transition">
+        <div className="rounded-3xl border border-slate-200/70 bg-white/80 p-6 text-slate-900 shadow-sm shadow-slate-200/60 backdrop-blur content-transition dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-100 dark:shadow-none">
             <PageHeader
                 search={search}
                 onSearchChange={(value) => {

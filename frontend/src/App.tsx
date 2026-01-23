@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { MainLayout } from "./layout/MainLayout";
 import { LoginPage } from "./pages/Login/LoginPage";
 import { RegisterPage } from "./pages/Register/RegisterPage";
@@ -7,6 +7,7 @@ import { UsersPage } from "./pages/Users/UsersPage";
 import { ProjectsPage } from "./pages/Projects/ProjectsPage";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { useAppSelector } from "./store/hooks";
+import { useTheme } from "./hooks/useTheme";
 
 const AuthenticatedLayout = () => {
   const token = useAppSelector((state) => state.auth.token);
@@ -30,8 +31,10 @@ const LoginRedirect = () => {
 
 const RegisterRedirect = () => {
   const token = useAppSelector((state) => state.auth.token);
+  const location = useLocation();
+  const inviteToken = new URLSearchParams(location.search).get("token");
 
-  if (token) {
+  if (token && !inviteToken) {
     return <Navigate to="/" replace />;
   }
 
@@ -39,6 +42,8 @@ const RegisterRedirect = () => {
 };
 
 export const App = () => {
+  useTheme();
+
   return (
     <Routes>
       <Route path="/" element={<AuthenticatedLayout />}>

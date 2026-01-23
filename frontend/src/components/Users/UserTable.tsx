@@ -28,14 +28,14 @@ const UserRow = memo(({ user, isPending, onRoleChange, onStatusChange }: UserRow
     );
 
     return (
-        <tr className="text-slate-200">
-            <td className="px-4 py-3 font-medium">{user.name}</td>
-            <td className="px-4 py-3 text-slate-300">{user.email}</td>
+        <tr className="text-slate-700 dark:text-slate-200">
+            <td className="px-4 py-3 font-medium text-slate-900 dark:text-white">{user.name}</td>
+            <td className="px-4 py-3 text-slate-600 dark:text-slate-300">{user.email}</td>
             <td className="px-4 py-3 pr-6">
                 <div className="flex justify-start">
                     <div className="relative inline-flex w-full items-center">
                         <select
-                            className="w-full appearance-none rounded-lg border border-slate-700 bg-slate-950 px-2 py-1 pr-7 text-xs text-slate-200"
+                            className="w-full appearance-none rounded-lg border border-slate-200 bg-white/95 px-3 py-2 pr-8 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
                             value={user.role}
                             disabled={isPending}
                             onChange={handleRoleChange}
@@ -45,7 +45,7 @@ const UserRow = memo(({ user, isPending, onRoleChange, onStatusChange }: UserRow
                             <option value="STAFF">STAFF</option>
                         </select>
                         <svg
-                            className="pointer-events-none absolute right-2 h-3 w-3 text-slate-400"
+                            className="pointer-events-none absolute right-3 h-4 w-4 text-slate-400"
                             viewBox="0 0 20 20"
                             fill="currentColor"
                             aria-hidden="true"
@@ -59,7 +59,7 @@ const UserRow = memo(({ user, isPending, onRoleChange, onStatusChange }: UserRow
                 <div className="flex justify-start">
                     <div className="relative inline-flex w-full items-center">
                         <select
-                            className="w-full appearance-none rounded-lg border border-slate-700 bg-slate-950 px-2 py-1 pr-7 text-xs text-slate-200"
+                            className="w-full appearance-none rounded-lg border border-slate-200 bg-white/95 px-3 py-2 pr-8 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
                             value={user.status}
                             disabled={isPending}
                             onChange={handleStatusChange}
@@ -68,7 +68,7 @@ const UserRow = memo(({ user, isPending, onRoleChange, onStatusChange }: UserRow
                             <option value="INACTIVE">INACTIVE</option>
                         </select>
                         <svg
-                            className="pointer-events-none absolute right-2 h-3 w-3 text-slate-400"
+                            className="pointer-events-none absolute right-3 h-4 w-4 text-slate-400"
                             viewBox="0 0 20 20"
                             fill="currentColor"
                             aria-hidden="true"
@@ -88,23 +88,23 @@ export const UserTable = memo(({ users, pendingId, onRoleChange, onStatusChange 
     if (users.length === 0) return null;
 
     return (
-        <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-800">
-            <table className="min-w-[640px] w-full table-fixed text-left text-sm">
+        <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-200/70 bg-white/85 shadow-sm shadow-slate-200/60 backdrop-blur dark:border-slate-800 dark:bg-slate-900/60 dark:shadow-none">
+            <table className="w-full min-w-[640px] table-fixed text-left text-[0.95rem]">
                 <colgroup>
                     <col className="w-1/4" />
                     <col className="w-5/12" />
                     <col className="w-1/6" />
                     <col className="w-1/6" />
                 </colgroup>
-                <thead className="bg-slate-900/80 text-xs uppercase tracking-[0.2em] text-slate-300">
+                <thead className="bg-slate-100/90 text-[0.65rem] uppercase tracking-[0.22em] text-slate-600 dark:bg-slate-900/80 dark:text-slate-300">
                     <tr>
-                        <th className="px-4 py-3">Name</th>
-                        <th className="px-4 py-3">Email</th>
-                        <th className="px-4 py-3">Role</th>
-                        <th className="px-4 py-3 pr-8">Status</th>
+                        <th className="px-4 py-3 text-slate-500 dark:text-slate-300">Name</th>
+                        <th className="px-4 py-3 text-slate-500 dark:text-slate-300">Email</th>
+                        <th className="px-4 py-3 text-slate-500 dark:text-slate-300">Role</th>
+                        <th className="px-4 py-3 pr-8 text-slate-500 dark:text-slate-300">Status</th>
                     </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800">
+                <tbody className="divide-y divide-slate-200/70 dark:divide-slate-800">
                     {users.map((user) => (
                         <UserRow
                             key={user.id}

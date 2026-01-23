@@ -59,14 +59,14 @@ export const InviteForm = memo(() => {
 
     return (
         <form
-            className="mt-6 grid gap-4 rounded-2xl border border-slate-800 bg-slate-950/60 p-4"
+            className="mt-6 grid gap-4 rounded-2xl border border-slate-200/70 bg-white/80 p-4 text-slate-900 shadow-sm shadow-slate-200/60 backdrop-blur dark:border-slate-800 dark:bg-slate-950/60 dark:text-slate-100 dark:shadow-none"
             onSubmit={handleInviteSubmit}
         >
             <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                    <label className="text-xs uppercase tracking-[0.2em] text-slate-300">Invite Email</label>
+                    <label className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-600 dark:text-slate-200">Invite Email</label>
                     <input
-                        className={`mt-2 w-full rounded-xl border bg-slate-950 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none ${
+                        className={`mt-2 w-full rounded-xl border bg-white/90 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500 ${
                             fieldErrors.email
                                 ? "border-rose-500/70 focus:border-rose-400"
                                 : "border-slate-700/80 focus:border-brand-500/70"
@@ -78,10 +78,12 @@ export const InviteForm = memo(() => {
                                 setFieldErrors((prev) => ({ ...prev, email: undefined }));
                             }
                         }}
-                        type="email"
+                        type="text"
+                        inputMode="email"
+                        autoComplete="email"
                     />
                     <p
-                        className={`mt-2 min-h-[1rem] text-xs text-rose-200 ${
+                        className={`mt-2 min-h-[1rem] text-sm text-rose-500 dark:text-rose-200 ${
                             fieldErrors.email ? "opacity-100" : "opacity-0"
                         }`}
                     >
@@ -89,10 +91,10 @@ export const InviteForm = memo(() => {
                     </p>
                 </div>
                 <div>
-                    <label className="text-xs uppercase tracking-[0.2em] text-slate-300">Role</label>
+                    <label className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-600 dark:text-slate-200">Role</label>
                     <div className="relative mt-2">
                         <select
-                            className="w-full appearance-none rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 pr-10 text-sm text-slate-200"
+                            className="w-full appearance-none rounded-xl border border-slate-200 bg-white/90 px-4 py-3 pr-10 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
                             value={inviteRole}
                             onChange={(event) => setInviteRole(event.target.value as UserRole)}
                         >
@@ -119,10 +121,10 @@ export const InviteForm = memo(() => {
                 {createInviteMutation.isPending ? "Sending..." : "Send Invite"}
             </button>
             {inviteStatus && (
-                <div className="flex flex-wrap items-center gap-3 text-sm text-amber-200">
+                <div className="flex flex-wrap items-center gap-3 text-sm font-medium text-amber-700 dark:text-amber-200">
                     <span>{inviteStatus}</span>
                     {inviteToken && (
-                        <span className="rounded-full border border-amber-400/30 px-3 py-1 text-xs text-amber-100">
+                        <span className="rounded-full border border-amber-400/40 px-3 py-1 text-xs font-semibold text-amber-700 dark:text-amber-100">
                             {inviteToken}
                         </span>
                     )}
@@ -133,8 +135,8 @@ export const InviteForm = memo(() => {
                                     type="button"
                                     className={`min-w-[132px] rounded-full border px-3 py-1 text-xs uppercase tracking-[0.2em] transition ${
                                         tokenCopied
-                                            ? "border-emerald-400/60 text-emerald-200 shadow-[0_0_16px_rgba(52,211,153,0.35)]"
-                                            : "border-amber-400/40 text-amber-200"
+                                            ? "border-emerald-400/60 text-emerald-700 shadow-[0_0_16px_rgba(52,211,153,0.25)] dark:text-emerald-200"
+                                            : "border-amber-400/40 text-amber-700 dark:text-amber-200"
                                     }`}
                                     onClick={() => handleCopyToken(inviteToken)}
                                 >
@@ -143,7 +145,7 @@ export const InviteForm = memo(() => {
                             )}
                             {inviteLink && (
                                 <a
-                                    className="min-w-[132px] rounded-full border border-slate-600 px-3 py-1 text-center text-xs uppercase tracking-[0.2em] text-slate-200 hover:border-slate-400"
+                                    className="min-w-[132px] rounded-full border border-slate-300 px-3 py-1 text-center text-xs uppercase tracking-[0.2em] text-slate-500 hover:border-slate-400 dark:border-slate-600 dark:text-slate-200"
                                     href={inviteLink}
                                 >
                                     Go to Register

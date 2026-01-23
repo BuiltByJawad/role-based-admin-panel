@@ -42,12 +42,15 @@ export const ProjectForm = memo(({ onError }: ProjectFormProps) => {
     }, [name, description, createMutation, onError]);
 
     return (
-        <form onSubmit={handleCreate} className="mt-6 grid gap-4 rounded-2xl border border-slate-800 bg-slate-950/60 p-4">
+        <form
+            onSubmit={handleCreate}
+            className="mt-6 grid gap-4 rounded-2xl border border-slate-200/70 bg-white/80 p-4 text-slate-900 shadow-sm shadow-slate-200/60 backdrop-blur dark:border-slate-800 dark:bg-slate-950/60 dark:text-slate-100 dark:shadow-none"
+        >
             <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                    <label className="text-xs uppercase tracking-[0.2em] text-slate-400">Project Name</label>
+                    <label className="text-xs uppercase tracking-[0.2em] text-slate-500 dark:text-slate-300">Project Name</label>
                     <input
-                        className={`mt-2 w-full rounded-xl border bg-slate-950 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none ${
+                        className={`mt-2 w-full rounded-xl border bg-white/90 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500 ${
                             fieldErrors.name
                                 ? "border-rose-500/70 focus:border-rose-400"
                                 : "border-slate-700/80 focus:border-brand-500/70"
@@ -61,7 +64,7 @@ export const ProjectForm = memo(({ onError }: ProjectFormProps) => {
                         }}
                     />
                     <p
-                        className={`mt-2 min-h-[1rem] text-xs text-rose-200 ${
+                        className={`mt-2 min-h-[1rem] text-xs text-rose-500 dark:text-rose-200 ${
                             fieldErrors.name ? "opacity-100" : "opacity-0"
                         }`}
                     >
@@ -69,9 +72,9 @@ export const ProjectForm = memo(({ onError }: ProjectFormProps) => {
                     </p>
                 </div>
                 <div>
-                    <label className="text-xs uppercase tracking-[0.2em] text-slate-400">Description</label>
+                    <label className="text-xs uppercase tracking-[0.2em] text-slate-500 dark:text-slate-300">Description</label>
                     <input
-                        className={`mt-2 w-full rounded-xl border bg-slate-950 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none ${
+                        className={`mt-2 w-full rounded-xl border bg-white/90 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500 ${
                             fieldErrors.description
                                 ? "border-rose-500/70 focus:border-rose-400"
                                 : "border-slate-700/80 focus:border-brand-500/70"
@@ -85,7 +88,7 @@ export const ProjectForm = memo(({ onError }: ProjectFormProps) => {
                         }}
                     />
                     <p
-                        className={`mt-2 min-h-[1rem] text-xs text-rose-200 ${
+                        className={`mt-2 min-h-[1rem] text-xs text-rose-500 dark:text-rose-200 ${
                             fieldErrors.description ? "opacity-100" : "opacity-0"
                         }`}
                     >

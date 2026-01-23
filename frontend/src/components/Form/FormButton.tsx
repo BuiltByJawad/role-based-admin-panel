@@ -22,9 +22,9 @@ export const FormButton = memo(({
     const baseClasses = "rounded-xl py-3 px-4 text-sm font-semibold transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-60";
 
     const variantClasses = {
-        primary: "glass-button text-slate-950 hover:brightness-110",
-        secondary: "glass-input text-slate-100 hover:border-sky-300/60 hover:text-white",
-        danger: "border border-red-500/40 text-red-200 hover:border-red-400/60 hover:bg-red-500/10",
+        primary: "bg-gradient-to-r from-brand-500 via-orange-500 to-amber-400 text-slate-950 shadow-lg shadow-orange-500/20 hover:brightness-110",
+        secondary: "border border-slate-300 bg-white/80 text-slate-700 hover:border-slate-400 dark:border-slate-600 dark:bg-slate-900/60 dark:text-slate-200",
+        danger: "border border-red-500/40 text-red-500 hover:border-red-400/60 hover:bg-red-500/10 dark:text-red-200",
     };
 
     return (

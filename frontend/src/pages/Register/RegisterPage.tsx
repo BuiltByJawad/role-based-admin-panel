@@ -40,6 +40,7 @@ export const RegisterPage = () => {
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
+        if (loading) return;
         setError("");
         setSuccess("");
 
@@ -63,6 +64,8 @@ export const RegisterPage = () => {
         try {
             await registerViaInvite(trimmed);
             setSuccess("Registration successful. Redirecting to users...");
+            setForm({ token: "", name: "", password: "" });
+            setErrors({});
             setTimeout(() => navigate("/users"), 1200);
         } catch (err) {
             setError(err instanceof Error ? err.message : "Registration failed");

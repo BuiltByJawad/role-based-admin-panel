@@ -10,6 +10,7 @@ Mid-level Full Stack assessment project with invite-based onboarding, RBAC, and 
 - Pagination + search for users/projects
 - Optimistic UI updates and cached queries
 - Persisted table cache (localStorage) for fast reloads
+- Dark theme by default with user-toggle support
 
 ## Tech Stack
 **Backend:** Node.js, Express, TypeScript, Prisma, PostgreSQL
@@ -75,6 +76,7 @@ DELETE /projects/:id          (ADMIN, soft delete)
 - **Auth:** JWT in Authorization header
 - **RBAC:** middleware for ADMIN-only endpoints
 - **Invites:** token-based, expiring invites
+- **Invite Registration:** open `/register?token=INVITE_TOKEN` to complete onboarding
 - **Soft Delete:** projects marked deleted, not removed
 - **Validation:** Zod schemas + centralized error handler
 - **State:** React Query caching + optimistic updates (persisted in localStorage)
