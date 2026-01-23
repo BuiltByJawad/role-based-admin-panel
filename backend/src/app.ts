@@ -1,4 +1,5 @@
 import express, { type Request, type Response } from "express";
+import helmet from "helmet";
 import cors from "cors";
 import { errorHandler } from "./middleware/errorHandler.js";
 import { authRouter } from "./routes/auth.js";
@@ -9,6 +10,7 @@ import { apiRateLimiter } from "./middleware/rateLimit.js";
 
 const app = express();
 
+app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use(apiRateLimiter);
