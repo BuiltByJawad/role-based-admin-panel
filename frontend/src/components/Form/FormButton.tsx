@@ -19,12 +19,12 @@ export const FormButton = memo(({
     variant = "primary",
     disabled = false,
 }: FormButtonProps) => {
-    const baseClasses = "rounded-xl py-3 px-4 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-60";
+    const baseClasses = "rounded-xl py-3 px-4 text-sm font-semibold transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-60";
 
     const variantClasses = {
-        primary: "bg-brand-500 text-white hover:bg-brand-600",
-        secondary: "border border-slate-700 text-slate-200 hover:bg-slate-800",
-        danger: "border border-red-500/40 text-red-200 hover:bg-red-500/10",
+        primary: "glass-button text-slate-950 hover:brightness-110",
+        secondary: "glass-input text-slate-100 hover:border-sky-300/60 hover:text-white",
+        danger: "border border-red-500/40 text-red-200 hover:border-red-400/60 hover:bg-red-500/10",
     };
 
     return (

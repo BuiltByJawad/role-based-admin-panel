@@ -1,4 +1,4 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchUsers, updateUserRole, updateUserStatus, type UserItem } from "../api/usersApi";
 import { useAppSelector } from "../store/hooks";
 import type { UserRole, UserStatus } from "../store/slices/authSlice";
@@ -11,6 +11,7 @@ export const useUsers = (page: number, limit: number, search?: string) => {
         queryFn: () => fetchUsers(token!, page, limit, search),
         enabled: !!token,
         staleTime: 1000 * 60 * 2,
+        placeholderData: keepPreviousData,
     });
 };
 

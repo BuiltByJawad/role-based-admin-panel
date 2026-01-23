@@ -1,4 +1,4 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
     fetchProjects,
     createProject,
@@ -17,6 +17,7 @@ export const useProjects = (page: number, limit: number, search?: string) => {
         queryFn: () => fetchProjects(token!, page, limit, search),
         enabled: !!token,
         staleTime: 1000 * 60 * 2,
+        placeholderData: keepPreviousData,
     });
 };
 

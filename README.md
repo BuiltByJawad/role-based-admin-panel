@@ -9,6 +9,7 @@ Mid-level Full Stack assessment project with invite-based onboarding, RBAC, and 
 - Project management with soft delete (admin-only edit/delete)
 - Pagination + search for users/projects
 - Optimistic UI updates and cached queries
+- Persisted table cache (localStorage) for fast reloads
 
 ## Tech Stack
 **Backend:** Node.js, Express, TypeScript, Prisma, PostgreSQL
@@ -76,7 +77,7 @@ DELETE /projects/:id          (ADMIN, soft delete)
 - **Invites:** token-based, expiring invites
 - **Soft Delete:** projects marked deleted, not removed
 - **Validation:** Zod schemas + centralized error handler
-- **State:** React Query for caching + optimistic updates
+- **State:** React Query caching + optimistic updates (persisted in localStorage)
 
 ## Tradeoffs & Assumptions
 - Email sending is simulated (token is returned in response).

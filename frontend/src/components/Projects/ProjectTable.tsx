@@ -52,7 +52,7 @@ const ProjectRow = memo(({
 
     return (
         <tr className="text-sm text-slate-200">
-            <td className="px-4 py-3">
+            <td className="px-4 py-3 pr-6">
                 {editing ? (
                     <input
                         className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-white placeholder:text-slate-400"
@@ -74,8 +74,8 @@ const ProjectRow = memo(({
                     <span className="text-slate-300">{project.description}</span>
                 )}
             </td>
-            <td className="px-4 py-3 text-right">
-                <div className="flex justify-end">
+            <td className="px-4 py-3">
+                <div className="flex justify-start">
                     {isAdmin ? (
                         <div className="relative inline-flex items-center">
                             <select
@@ -104,8 +104,8 @@ const ProjectRow = memo(({
                 </div>
             </td>
             {isAdmin && (
-                <td className="px-4 py-3">
-                    <div className="flex flex-wrap gap-2">
+                <td className="px-4 py-3 pr-6">
+                    <div className="flex flex-wrap justify-start gap-2">
                         {editing ? (
                             <>
                                 <button
@@ -172,8 +172,8 @@ export const ProjectTable = memo(({
                     <tr>
                         <th className="px-4 py-3">Name</th>
                         <th className="px-4 py-3">Description</th>
-                        <th className="px-4 py-3 text-right">Status</th>
-                        {isAdmin && <th className="px-4 py-3 text-right">Actions</th>}
+                        <th className="px-4 py-3 pr-6">Status</th>
+                        {isAdmin && <th className="px-4 py-3 pr-6">Actions</th>}
                     </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-800">

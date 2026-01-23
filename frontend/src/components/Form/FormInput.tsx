@@ -23,13 +23,13 @@ export const FormInput = memo(({
 
     return (
         <div>
-            <label htmlFor={id} className="text-xs uppercase tracking-[0.2em] text-slate-400">
+            <label htmlFor={id} className="text-xs uppercase tracking-[0.2em] text-slate-300">
                 {label}
             </label>
             <input
                 id={id}
                 type={type}
-                className="mt-2 w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white placeholder:text-slate-500 disabled:opacity-50"
+                className="glass-input mt-2 w-full rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-400 focus:border-sky-300/60 focus:outline-none focus:ring-2 focus:ring-sky-300/20 disabled:opacity-50"
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
                 required={required}

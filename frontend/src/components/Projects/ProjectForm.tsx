@@ -14,10 +14,12 @@ export const ProjectForm = memo(({ onError }: ProjectFormProps) => {
     const handleCreate = useCallback(async (event: React.FormEvent) => {
         event.preventDefault();
         const nextErrors: { name?: string; description?: string } = {};
-        if (!name.trim()) {
+        const trimmedName = name.trim();
+        const trimmedDescription = description.trim();
+        if (!trimmedName) {
             nextErrors.name = "Project name is required.";
         }
-        if (!description.trim()) {
+        if (!trimmedDescription) {
             nextErrors.description = "Description is required.";
         }
         setFieldErrors(nextErrors);
@@ -25,7 +27,7 @@ export const ProjectForm = memo(({ onError }: ProjectFormProps) => {
             return;
         }
         createMutation.mutate(
-            { name, description },
+            { name: trimmedName, description: trimmedDescription },
             {
                 onSuccess: () => {
                     setName("");
